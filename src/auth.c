@@ -16,7 +16,8 @@ int admin_login(const char *user, const char *password)
 
 size_t set_username(user_t *user, const char *name)
 {
-    strcpy(user->name, name);
+    strncpy(user->name, name, sizeof(user->name) - 1);
+    user->name[sizeof(user->name) - 1] = '\0';
     return strlen(user->name);
 }
 
